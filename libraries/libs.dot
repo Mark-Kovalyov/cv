@@ -3,15 +3,15 @@ digraph mtnuniverse {
           label = "Libraries";
           color=blue;
 
-          image    [label = "mayton.libs:image:1.4.1"];
-          math     [label = "mayton.libs:math:1.0-SNAPSHOT" color = red];
-          neural   [label = "mayton.libs:neural:?" color = red];
-          "graph"  [label = "mayton.libs:mtn-graph:5.0.4" ];
-          exods    [label = "ayton.libs:mtn-exods:1.0" color = red]
-          encoders [label = "mayton.libs:encoders:1.1" color = red];
-          network  [label = "mayton.libs:network:1.3.3"];
-          utils    [label = "mayton.libs:utils:1.10.0"];
-          banking  [label = "mayton.libs:mtn-banking:1.0-SNAPSHOT" color = red];
+          image    [label = "mayton.libs:image:1.4.1" shape = box];
+          math     [label = "mayton.libs:math:1.0-SNAPSHOT" color = red shape = box;];
+          neural   [label = "mayton.libs:neural:?" color = red shape = box;];
+          "graph"  [label = "mayton.libs:mtn-graph:5.0.4" shape = box;];
+          exods    [label = "ayton.libs:mtn-exods:1.0" color = red shape = box;]
+          encoders [label = "mayton.libs:encoders:1.1" color = red shape = box;];
+          network  [label = "mayton.libs:network:1.3.3" shape = box;];
+          utils    [label = "mayton.libs:utils:1.10.0" shape = box;];
+          banking  [label = "mayton.libs:mtn-banking:1.0-SNAPSHOT" color = red shape = box;];
 
           neural -> math;
           image -> math;
@@ -21,9 +21,11 @@ digraph mtnuniverse {
      subgraph applications {
           style=filled;
 
-          db2orc [label = "Db-to-Orc" ];
-          dhtobserver [label = "Dht-Observer" ];
+          db2orc [label = "Db-to-Orc" shape = component];
+          httprsync [label = "Http-Rsync" shape = component];
+          dhtobserver [label = "Dht-Observer" shape = component];
           db2orc -> utils;
+          httprsync -> utils;
           dhtobserver -> encoders;
           dhtobserver -> network;
      }
